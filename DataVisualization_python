@@ -1,0 +1,44 @@
+"""
+Created on Tue Mar 31 21:55:23 2020
+@author: SefaTosun
+"""
+
+import pandas as pd
+import matplotlib.pyplot as plt 
+confirmed_df = pd.read_csv('https://github.com/sefatosunn/Covid19-Turkey/blob/master/Covid19-Turkey.csv')
+print(confirmed_df)
+
+"""This is one figure"""
+# plt.plot(confirmed_df['Daily Cases'],color="blue")
+# plt.plot(confirmed_df['Total Cases'],color="pink")
+# plt.plot(confirmed_df['Total Deaths'],color="red")
+# plt.plot(confirmed_df['Total Recovered'],color="green")
+# plt.plot(confirmed_df['Daily Test Cases'],color="orange")
+
+# plt.title("Covid-19 Graph", fontsize=15)
+# plt.xlabel("Number of days", fontsize=15)
+# plt.ylabel("Cases", fontsize=15)
+# plt.legend(["Daily Cases","Total Cases","Total Deaths","Total Recovered","Daily Test Cases"])
+# plt.savefig("grafik.png")
+
+"""This is for Subplots"""
+plt.subplot(121)
+plt.title("Covid-19 Graph in TURKEY", fontsize=15)
+plt.xlabel("Date", fontsize=10)
+plt.ylabel("Cases", fontsize=10)
+
+plt.plot(confirmed_df['Date'],confirmed_df['Daily Cases'],color="blue")
+plt.plot(confirmed_df['Date'],confirmed_df['Total Cases'],color="purple")
+plt.plot(confirmed_df['Date'],confirmed_df['Daily Test Cases'],color="black")
+plt.tick_params(axis='x', rotation=90)
+plt.legend(["Daily Cases","Total Cases","Daily Test Cases"])
+
+
+plt.subplot(122)
+plt.xlabel("Date", fontsize=10)
+plt.ylabel("Cases", fontsize=10)
+plt.plot(confirmed_df['Date'],confirmed_df['Total Deaths'],color="red")
+plt.plot(confirmed_df['Date'],confirmed_df['Total Recovered'],color="green")
+plt.tick_params(axis='x', rotation=90)
+plt.legend(["Total Deaths","Total Recovered"])
+plt.savefig("grafik.png")
